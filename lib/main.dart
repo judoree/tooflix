@@ -12,12 +12,12 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  int counter = 0;
+  List<int> numbers = [];
 
   void ocClicked() {
     setState(
       () {
-        counter = counter + 1;
+        numbers.add(numbers.length);
       },
     );
   }
@@ -26,7 +26,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: const Color(0xFF181818),
+        // backgroundColor: const Color(0xFF181818),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -34,17 +34,11 @@ class _AppState extends State<App> {
               const Text(
                 'Click me',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 40,
                 ),
               ),
-              Text(
-                '$counter',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 40,
-                ),
-              ),
+              for (var n in numbers) Text('$n'),
               IconButton(
                 iconSize: 40,
                 onPressed: ocClicked,
