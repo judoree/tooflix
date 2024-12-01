@@ -12,9 +12,13 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  List<int> numbers = [];
+  bool showTitle = true;
 
-  void ocClicked() {}
+  void toggleTitle() {
+    setState(() {
+      showTitle = !showTitle;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +35,7 @@ class _AppState extends State<App> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              MyLargeTitle(),
-            ],
+            children: [],
           ),
         ),
       ),
@@ -41,10 +43,26 @@ class _AppState extends State<App> {
   }
 }
 
-class MyLargeTitle extends StatelessWidget {
+class MyLargeTitle extends StatefulWidget {
   const MyLargeTitle({
     super.key,
   });
+
+  @override
+  State<MyLargeTitle> createState() => _MyLargeTitleState();
+}
+
+class _MyLargeTitleState extends State<MyLargeTitle> {
+  int counter = 0;
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
