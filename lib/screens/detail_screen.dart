@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tooflix/models/webtoon_detail_model.dart';
 import 'package:tooflix/models/webtoon_episode_model.dart';
 import 'package:tooflix/services/api_service.dart';
+import 'package:tooflix/widgets/episode_widget.dart';
 
 class DetailScreen extends StatefulWidget {
   final String title, thumb, id;
@@ -40,7 +41,7 @@ class _DetailScreenState extends State<DetailScreen> {
           widget.title,
           style: const TextStyle(
             fontSize: 24,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w400,
           ),
         ),
       ),
@@ -113,38 +114,9 @@ class _DetailScreenState extends State<DetailScreen> {
                                 return Column(
                                   children: [
                                     for (var episode in snapshot.data!)
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                          bottom: 10,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                            20,
-                                          ),
-                                          color: Colors.green.shade300,
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 10,
-                                            vertical: 20,
-                                          ),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                episode.title,
-                                                style: const TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 15),
-                                              ),
-                                              const Icon(
-                                                Icons.chevron_right_rounded,
-                                                color: Colors.white,
-                                              )
-                                            ],
-                                          ),
-                                        ),
+                                      Episode(
+                                        episode: episode,
+                                        webtoonId: widget.id,
                                       )
                                   ],
                                 );
